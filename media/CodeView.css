@@ -1,3 +1,101 @@
+:root {
+    --ankiview-surface: rgba(18, 18, 18, 0.92);
+    --ankiview-surface-border: rgba(82, 82, 82, 0.18);
+    --ankiview-surface-shadow: rgba(0, 0, 0, 0.38);
+    --ankiview-muted: rgba(226, 232, 240, 0.78);
+}
+
+anki {
+    display: block;
+}
+
+.card.ankiview {
+    padding: 16px;
+    border: 1px solid var(--ankiview-surface-border);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(36, 36, 36, 0.96), var(--ankiview-surface));
+    box-shadow: 0 16px 36px var(--ankiview-surface-shadow);
+    color: var(--vscode-editor-foreground);
+    overflow: hidden;
+    font-size: min(16px, 1.1em); /* add fallback base font size limit */
+}
+
+/* Ensure headings aren't overly large */
+.card.ankiview h1 { font-size: 1.4em !important; margin-bottom: 0.5em; }
+.card.ankiview h2 { font-size: 1.25em !important; margin-bottom: 0.5em; }
+.card.ankiview h3 { font-size: 1.1em !important; margin-bottom: 0.5em; }
+.card.ankiview h4 { font-size: 1em !important; margin-bottom: 0.5em; }
+.card.ankiview h5 { font-size: 0.95em !important; margin-bottom: 0.5em; }
+.card.ankiview h6 { font-size: 0.9em !important; margin-bottom: 0.5em; }
+
+/* Scale down large inline span/div text if possible, e.g. Anki users often use huge font-sizes */
+.card.ankiview *[style*="font-size: 2"],
+.card.ankiview *[style*="font-size: 3"],
+.card.ankiview *[style*="font-size: 4"] {
+    font-size: 1.2em !important;
+}
+
+.card.ankiview > :first-child {
+    margin-top: 0;
+}
+
+.card.ankiview > :last-child {
+    margin-bottom: 0;
+}
+
+.card.ankiview img {
+    display: block;
+    width: min(100%, 240px) !important;
+    max-width: 240px !important;
+    max-height: 180px !important;
+    height: auto !important;
+    object-fit: cover;
+    margin: 12px auto;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+    filter: grayscale(1) brightness(0.92) contrast(1.02);
+}
+
+.card.ankiview hr {
+    border: 0;
+    border-top: 1px solid rgba(82, 82, 82, 0.22);
+    margin: 14px 0;
+}
+
+.card.ankiview,
+.card.ankiview p,
+.card.ankiview li,
+.card.ankiview span,
+.card.ankiview div {
+    color: inherit;
+}
+
+.ankiview-question-controller,
+.ankiview-answer-controller {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 14px;
+}
+
+.ankiview-question-button,
 .ankiview-answer-button {
-    width: 23%;
+    flex: 1 1 120px;
+    min-width: 0;
+    width: auto;
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+.ankiview-answer-button {
+    width: auto;
+}
+
+.ankiview-question .card.ankiview {
+    background: linear-gradient(180deg, rgba(28, 28, 28, 0.98), rgba(14, 14, 14, 0.94));
+}
+
+.ankiview-answer .card.ankiview {
+    background: linear-gradient(180deg, rgba(32, 32, 32, 0.98), rgba(14, 14, 14, 0.95));
 }
